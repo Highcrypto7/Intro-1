@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOAT 마케팅 | 대한민국 유일 올인원 GEO 에이전시</title>
+    <meta name="description" content="ChatGPT, Perplexity 등 AI 검색 엔진에서 귀사를 1순위로 만드는 GEO 마케팅 솔루션. 웹 구축부터 AI 검색 노출, 언론 홍보까지 올인원 서비스.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+            word-break: keep-all;
+        }
+        
+        body {
+            background-color: #FFFFFF;
+            overflow-x: hidden;
+        }
+        
+        :root {
+            --toss-blue: #3182F6;
+            --toss-blue-light: #E8F3FF;
+            --toss-blue-dark: #1B64DA;
+            --pastel-gray: #F9FAFB;
+            --dark-navy: #191F28;
+            --text-gray: #4E5968;
+        }
+        
+        .toss-blue { color: var(--toss-blue); }
+        .bg-toss-blue { background-color: var(--toss-blue); }
+        .bg-pastel-blue { background-color: var(--toss-blue-light); }
+        .bg-pastel-gray { background-color: var(--pastel-gray); }
+        
+        /* 화려한 텍스트 그라데이션 */
+        .gradient-text {
+            background: linear-gradient(135deg, #3182F6 0%, #00C4FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* CTA 버튼 글로우 애니메이션 */
+        .cta-button {
+            background: linear-gradient(135deg, var(--toss-blue) 0%, #5C9DFF 100%);
+            color: white;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 10px 20px rgba(49, 130, 246, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.2);
+            transform: rotate(45deg) translate(-100%, 100%);
+            transition: all 0.5s ease;
+        }
+
+        .cta-button:hover::after {
+            transform: rotate(45deg) translate(100%, -100%);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(49, 130, 246, 0.4);
+        }
+
+        /* 디테일한 카드 3D 호버 효과 */
+        .hover-card {
+            background: white;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #F2F4F6;
+            transform: perspective(1000px) translateZ(0);
+        }
+        
+        .hover-card:hover {
+            transform: perspective(1000px) translateZ(30px) translateY(-5px); /* 앞으로 3D처럼 튀어나옴 */
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            border-color: #E8F3FF;
+        }
+
+        /* 아이콘 다이나믹 3D 효과 */
+        .icon-3d {
+            display: inline-block;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: center;
+        }
+
+        .group:hover .icon-3d {
+            transform: scale(1.1) translateY(-4px);
+            color: var(--toss-blue);
+            filter: drop-shadow(0 10px 10px rgba(49, 130, 246, 0.25));
+        }
+
+        /* 통계 박스 개별 호버 */
+        .stat-box {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid #F2F4F6;
+            transition: all 0.3s ease;
+        }
+        .stat-box:hover {
+            background: var(--toss-blue-light);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(49, 130, 246, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--toss-blue);
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .highlight-box {
+            background: #E8F3FF;
+            color: var(--toss-blue);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .price-card {
+            background: linear-gradient(145deg, #191F28 0%, #3182F6 100%);
+            color: white;
+            border-radius: 24px;
+            padding: 3.5rem;
+            box-shadow: 0 20px 50px rgba(49, 130, 246, 0.25);
+            max-width: 850px;
+            margin: 3rem auto;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .price-card:hover {
+            transform: scale(1.02);
+        }
+
+        /* 플로팅 뱃지 애니메이션 */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-badge {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* 배경 맥박 애니메이션 (히어로 섹션용) */
+        @keyframes pulse-slow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 6s infinite ease-in-out;
+        }
+
+        /* 마지막 CTA 섹션 디자인 설정 */
+        .final-cta {
+            position: relative;
+            background-color: var(--dark-navy);
+            color: white;
+            padding: 8rem 2rem;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        /* 그라데이션 후광 효과 */
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(49, 130, 246, 0.2) 0%, rgba(49, 130, 246, 0) 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .final-cta::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            right: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, rgba(139, 92, 246, 0) 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .final-cta * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 페이드인 애니메이션 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    
+    <section class="relative pt-32 pb-28 px-4 overflow-hidden bg-white">
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full max-w-6xl pointer-events-none z-0">
+            <div class="absolute rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse-slow" style="width: 600px; height: 600px; background-color: #E8F3FF; top: -100px; left: -100px;"></div>
+            <div class="absolute rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse-slow" style="width: 500px; height: 500px; background-color: #E0F2FE; bottom: -50px; right: -50px; animation-delay: 2s;"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto text-center fade-in relative z-10">
+            <div class="mb-8 inline-block bg-white px-5 py-2.5 rounded-full shadow-md text-sm font-bold text-toss-blue border border-blue-100 floating-badge">
+                <i class="fas fa-bolt mr-2 text-yellow-400 text-lg"></i>웹 제작부터 GEO, SEO, PR까지 올인원
+            </div>
+            
+            <div class="mb-10">
+                <h1 class="text-5xl md:text-7xl font-black mb-6 text-dark-navy leading-tight tracking-tight">
+                    "ChatGPT, 강남역 피부과<br>
+                    어디가 제일 좋아?"
+                </h1>
+                <h2 class="text-3xl md:text-5xl font-bold mb-8 text-dark-navy tracking-tight">
+                    이 질문의 유일한 정답,<br>
+                    <span class="gradient-text">귀사로 만들어 드립니다.</span>
+                </h2>
+            </div>
+            
+            <div class="inline-block bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm rounded-2xl p-6 mb-12 border border-gray-100 shadow-sm">
+                <p class="text-xl md:text-2xl text-text-gray leading-relaxed font-medium">
+                    검색의 시대는 끝났습니다. 이제 고객은 AI에게 '정답'을 묻습니다.<br>
+                    웹 구축, SEO, 언론 홍보, 그리고 AI 알고리즘 최적화(GEO)까지 통제하는<br>
+                    <span class="highlight-box mt-3 text-2xl px-4 py-2">대한민국 유일의 올인원 하이브리드 에이전시</span>
+                </p>
+            </div>
+            <br>
+            <a href="https://open.kakao.com/o/sJ0aXMfi" target="_blank" class="cta-button text-2xl py-5 px-10">
+                <i class="fas fa-comment-dots mr-3 text-3xl"></i>
+                GOAT 마케팅 AI 노출 진단받기
+            </a>
+        </div>
+    </section>
+    
+    <section class="py-24 px-4 bg-pastel-gray">
+        <div class="max-w-6xl mx-auto fade-in">
+            <h2 class="text-4xl font-black text-center mb-16 text-dark-navy">
+                <i class="fas fa-exclamation-triangle toss-blue mr-3"></i>대표님의 마케팅 예산,<br>혹시 허공에 타들어가고 있진 않나요?
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="hover-card p-8 flex flex-col items-start group">
+                    <div class="text-4xl mb-6 toss-blue icon-3d">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-dark-navy">출혈 경쟁의 늪,<br>네이버 파워링크</h3>
+                    <p class="text-text-gray leading-relaxed">
+                        월 수백만 원을 클릭당 단가(CPC)에 태우고 있지만, 실제 체류 시간과 전환율은 바닥을 칩니다. 단순 검색 노출은 더 이상 신뢰를 주지 못합니다.
+                    </p>
+                </div>
+                
+                <div class="hover-card p-8 flex flex-col items-start group">
+                    <div class="text-4xl mb-6 toss-blue icon-3d">
+                        <i class="fas fa-ghost"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-dark-navy">AI 생태계 속<br>투명 인간된 브랜드</h3>
+                    <p class="text-text-gray leading-relaxed">
+                        블로그 글은 수백 개인데, 정작 고객이 퍼플렉시티나 ChatGPT에 검색하면 <strong>경쟁사 이름만 추천</strong>됩니다. AI 크롤러가 읽지 못하는 낡은 형식이기 때문입니다.
+                    </p>
+                </div>
+                
+                <div class="hover-card p-8 flex flex-col items-start group">
+                    <div class="text-4xl mb-6 toss-blue icon-3d">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-dark-navy">반쪽짜리 외주 업체의<br>명확한 한계</h3>
+                    <p class="text-text-gray leading-relaxed">
+                        웹 에이전시는 코드만 짜고, 마케팅 회사는 글만 씁니다. 파편화된 대행사로는 유기적인 <strong>'AI 알고리즘 설계'</strong>를 절대 이뤄낼 수 없습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="py-24 px-4 bg-white">
+        <div class="max-w-6xl mx-auto fade-in">
+            <h2 class="text-4xl font-black text-center mb-6 text-dark-navy">
+                글만 쓰는 마케터는<br>
+                <span class="toss-blue">절대 AI를 설득할 수 없습니다.</span>
+            </h2>
+            
+            <p class="text-xl text-center mb-16 text-text-gray font-medium">
+                생성형 AI(LLM)는 감성적인 글귀에 속지 않습니다.<br>
+                AI가 가장 빠르고 정확하게 긁어갈 수 있는 <strong>코드 구조</strong>와 <strong>논리적 데이터베이스</strong>가 필요합니다.
+            </p>
+            
+            <div class="grid md:grid-cols-1 gap-6 max-w-4xl mx-auto">
+                <div class="hover-card p-8 flex flex-col md:flex-row items-center md:items-start group border-l-4 border-toss-blue">
+                    <div class="text-5xl mr-0 md:mr-8 mb-4 md:mb-0 icon-3d text-toss-blue">💻</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3 text-dark-navy">1. 웹(Web) DNA 전면 개편</h3>
+                        <p class="text-text-gray leading-relaxed">
+                            AI 크롤러가 가장 사랑하는 <strong>Next.js 기반 초고속 웹사이트</strong>를 직접 빌드합니다. <span class="highlight-box">JSON-LD</span> 및 <span class="highlight-box">Schema.org</span> 구조화 마크업을 심어 AI의 뇌에 귀사의 전문성을 직접 꽂아 넣습니다.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="hover-card p-8 flex flex-col md:flex-row items-center md:items-start group border-l-4 border-toss-blue">
+                    <div class="text-5xl mr-0 md:mr-8 mb-4 md:mb-0 icon-3d text-toss-blue">🧠</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3 text-dark-navy">2. 타겟 프롬프트 엔티티(Entity) 설계</h3>
+                        <p class="text-text-gray leading-relaxed">
+                            잠재 고객이 AI에게 던질 질문을 역추적해 사이트 내부에 완벽한 해답(Q&A) 클러스터를 구축합니다. 클릭 유도가 아닌, 철저히 <strong>AI의 '언급과 추천'을 유도하는 콘텐츠 최적화</strong>를 진행합니다.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="hover-card p-8 flex flex-col md:flex-row items-center md:items-start group border-l-4 border-toss-blue">
+                    <div class="text-5xl mr-0 md:mr-8 mb-4 md:mb-0 icon-3d text-toss-blue">📢</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3 text-dark-navy">3. 올인원 Authority(권위) 장악</h3>
+                        <p class="text-text-gray leading-relaxed">
+                            내부 최적화로 끝내지 않습니다. 고품질 언론 홍보(PR) 초반 집중 송출, 외부 백링크 네트워크, 마케팅 자동화까지 <strong>단 하나의 에이전시에서 완벽하게 통제</strong>하여 AI에게 압도적인 신뢰도를 증명합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="py-24 px-4 bg-pastel-blue">
+        <div class="max-w-6xl mx-auto fade-in">
+            <h2 class="text-4xl font-black text-center mb-4 text-dark-navy">
+                "진짜 될까?" 고민하는 사이,<br>
+                누군가는 이미 <span class="toss-blue">AI 시장을 독식</span>하고 있습니다.
+            </h2>
+            <p class="text-center text-text-gray text-lg mb-16">
+                어설픈 템플릿 대행사가 흉내 낼 수 없는, GOAT 마케팅만의 <strong>진짜 올인원 성공 사례</strong>를 확인하세요.
+            </p>
+            
+            <div class="hover-card p-10 mb-10 border-t-4 border-toss-blue relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-toss-blue text-white px-4 py-2 font-bold rounded-bl-xl shadow-md">
+                    B2B SaaS 솔루션
+                </div>
+                <h3 class="text-3xl font-black mb-2 text-dark-navy">국내 엔터프라이즈 B2B 솔루션 S사</h3>
+                <p class="text-text-gray mb-8 font-medium">단가 수천만 원의 고관여 B2B 시장, AI 검색 선점 사례</p>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-red-50 p-6 rounded-xl">
+                        <h4 class="text-xl font-bold mb-3 text-red-600"><i class="fas fa-exclamation-triangle mr-2"></i>문제 상황</h4>
+                        <p class="text-gray-700 leading-relaxed">
+                            기술력은 업계 최고 수준이나, 신규 고객사 실무진들이 ChatGPT에 "마케팅 자동화 솔루션 추천"을 검색할 때마다 <strong>경쟁사(글로벌 툴)만 노출되어 인바운드 리드가 메마른 상태.</strong>
+                        </p>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-xl">
+                        <h4 class="text-xl font-bold mb-3 toss-blue"><i class="fas fa-lightbulb mr-2"></i>GOAT 올인원 솔루션</h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Next.js 기반 속도 최적화 및 <strong>SoftwareApplication 스키마 100% 적용</strong></li>
+                            <li>B2B 실무자들의 타겟 프롬프트(기능 비교, 도입 비용) 블로그 클러스터링</li>
+                            <li>IT 전문 매체 집중 언론 홍보(Tech PR)로 구글 봇 신뢰도 획득</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                    <h4 class="text-xl font-bold mb-4 text-dark-navy text-center">4개월 후 폭발적인 결과</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="stat-box text-center">
+                            <span class="stat-number text-3xl">1위</span>
+                            <span class="text-sm text-gray-500 font-bold mt-2 block">Perplexity B2B 툴 추천</span>
+                        </div>
+                        <div class="stat-box text-center">
+                            <span class="stat-number text-3xl">300%</span>
+                            <span class="text-sm text-gray-500 font-bold mt-2 block">인바운드 리드 증가</span>
+                        </div>
+                        <div class="stat-box text-center">
+                            <span class="stat-number text-3xl">50%</span>
+                            <span class="text-sm text-gray-500 font-bold mt-2 block">검색 광고비 절감</span>
+                        </div>
+                        <div class="stat-box text-center">
+                            <span class="stat-number text-3xl">4.5배</span>
+                            <span class="text-sm text-gray-500 font-bold mt-2 block">오가닉 트래픽 상승</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hover-card p-10 mb-10 border-t-4 border-toss-blue relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-toss-blue text-white px-4 py-2 font-bold rounded-bl-xl shadow-md">
+                    로컬 비즈니스 (의료)
+                </div>
+                <h3 class="text-3xl font-black mb-2 text-dark-navy">강남 초대형 프리미엄 N 피부과</h3>
+                <p class="text-text-gray mb-8 font-medium">초경쟁 키워드 시장에서의 오가닉 검색 장악 사례</p>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-red-50 p-6 rounded-xl">
+                        <h4 class="text-xl font-bold mb-3 text-red-600"><i class="fas fa-exclamation-triangle mr-2"></i>문제 상황</h4>
+                        <p class="text-gray-700 leading-relaxed">
+                            강남역 반경 1km 내 수백 개의 병원. 파워링크 <strong>클릭당 5~8만 원이 넘는 치킨게임</strong>으로 마케팅 예산이 월 수천만 원씩 소진되나 신규 환자 유입은 정체됨.
+                        </p>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-xl">
+                        <h4 class="text-xl font-bold mb-3 toss-blue"><i class="fas fa-lightbulb mr-2"></i>GOAT 올인원 솔루션</h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li><strong>LocalBusiness 스키마 코드</strong>로 구글/AI 봇에 의료진 약력, 리뷰, 영업정보 강제 맵핑</li>
+                            <li>"강남역 양심 피부과" 등 타겟 프롬프트를 언론 기사에 심어 백링크 폭격</li>
+                            <li>실제 환자 후기를 AI가 쉽게 크롤링하도록 Q&A 형태로 데이터베이스화</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                    <h4 class="text-xl font-bold mb-4 text-dark-navy text-center">3개월 후 폭발적인 결과</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="stat-box text-center">
+                            <span class="stat-number text-3xl">Top 3</span>
+                            <span class="text-sm text-gray-500 font-bold mt-2 block">ChatGPT 상위 랭크 고정</span>
+                        </div>
+                        <div class="stat-box text-center">
+                            <span class="stat-number text-3xl">4배</span>
+                            <span class="text-sm text-gray-500 font-bold mt-2 block">자연 유입 예약률</span>
+                        </div>
+                        <div class="stat-box text-center">
+                            <span class="stat-number text-3xl">0원</span>
+                            <span class="text-sm text-gray-500 font-bold mt-2 block">파워링크 추가 예산</span>
+                        </div>
+                        <div class="stat-box text-center">
+                            <span class="stat-number text-3xl">압도적</span>
+                            <span class="text-sm text-gray-500 font-bold mt-2 block">지역 내 신뢰도 선점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hover-card p-10 border-t-4 border-toss-blue relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-toss-blue text-white px-4 py-2 font-bold rounded-bl-xl shadow-md">
+                    이커머스 / 브랜드
+                </div>
+                <h3 class="text-3xl font-black mb-2 text-dark-navy">프리미엄 니치 스킨케어 브랜드 E사</h3>
+                <p class="text-text-gray mb-8 font-medium">SNS 광고 효율 저하를 AI 검색으로 돌파한 사례</p>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-red-50 p-6 rounded-xl">
+                        <h4 class="text-xl font-bold mb-3 text-red-600"><i class="fas fa-exclamation-triangle mr-2"></i>문제 상황</h4>
+                        <p class="text-gray-700 leading-relaxed">
+                            메타(인스타) 광고 단가 폭등. 브랜드 인지도는 낮고 <strong>자연 검색(오가닉) 트래픽은 0에 수렴</strong>. 대형 뷰티 커뮤니티나 포털 추천에서 완전히 배제된 상황.
+                        </p>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-xl">
+                        <h4 class="text-xl font-bold mb-3 toss-blue"><i class="fas fa-lightbulb mr-2"></i>GOAT 올인원 솔루션</h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>감성 문구뿐인 템플릿 웹 폐기. Product 및 Review 스키마 전면 도입</li>
+                            <li>AI 인덱싱을 위한 성분/효과 분석 <strong>지식 그래프(Knowledge Graph) 구축</strong></li>
+                            <li>뷰티/라이프스타일 매거진 집중 PR로 브랜드 초기 신뢰도(Authority) 장악</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                    <h4 class="text-xl font-bold mb-4 text-dark-navy text-center">6개월 후 폭발적인 결과</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="stat-box text-center">
+                            <span class="stat-number text-3xl">40%</span>
+                            <span class="text-sm text-gray-500 font-bold mt-2 block">AI 추천 구매 비중</span>
+                        </div>
+                        <div class="stat-box text-center">
+                            <span class="stat-number text-3xl">10배</span>
+                            <span class="text-sm text-gray-500 font-bold mt-2 block">브랜드 멘션 트래픽</span>
+                        </div>
+                        <div class="stat-box text-center">
+                            <span class="stat-number text-3xl">28%</span>
+                            <span class="text-sm text-gray-500 font-bold mt-2 block">재구매율 전환 (기존 9%)</span>
+                        </div>
+                        <div class="stat-box text-center">
+                            <span class="stat-number text-3xl">1위</span>
+                            <span class="text-sm text-gray-500 font-bold mt-2 block">"비건 스킨케어" 질의 시</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <section class="py-24 px-4 bg-white">
+        <div class="max-w-6xl mx-auto fade-in">
+            <h2 class="text-4xl font-black text-center mb-4 text-dark-navy">
+                기능 없는 깡통 홈페이지 하나에<br>500만 원을 버리시겠습니까?
+            </h2>
+            <p class="text-xl text-center mb-16 text-text-gray font-medium">
+                그 예산으로 <span class="highlight-box">초고속 웹 구축 + AI 노출 최적화 + 언론 홍보</span>를 모두 가져가십시오.
+            </p>
+            
+            <div class="price-card">
+                <div class="absolute -top-4 -right-4 text-9xl opacity-10">
+                    <i class="fas fa-crown"></i>
+                </div>
+                
+                <div class="relative z-10 text-center mb-10">
+                    <div class="text-yellow-300 text-3xl mb-4 floating-badge">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="text-4xl font-black mb-4">GOAT 시그니처 부스트 패키지</h3>
+                    <p class="text-xl text-blue-100 mb-2 font-medium">4개월 집중 올인원 마스터 플랜</p>
+                    <p class="text-sm text-blue-200">타 대행사의 월 500만 원짜리 껍데기 계약을 완벽히 압도합니다.</p>
+                </div>
+                
+                <div class="relative z-10 text-center mb-12">
+                    <div class="text-6xl md:text-7xl font-black mb-2 flex justify-center items-end">
+                        500만 원 <span class="text-3xl font-bold ml-2 pb-2">부터 ~</span>
+                    </div>
+                    <div class="bg-blue-800 text-white inline-block px-6 py-2 rounded-full font-bold text-lg mt-3 border border-blue-600 shadow-inner">
+                        <i class="fas fa-sliders-h mr-2"></i>업종 및 키워드 경쟁도에 따른 1:1 맞춤 견적
+                    </div>
+                </div>
+                
+                <div class="relative z-10 bg-white bg-opacity-10 rounded-2xl p-8 backdrop-filter backdrop-blur-sm border border-white border-opacity-20">
+                    <h4 class="text-2xl font-bold mb-6 text-center text-yellow-300 border-b border-white border-opacity-20 pb-4">올인원 포함 내역</h4>
+                    <ul class="space-y-5 text-lg font-medium">
+                        <li class="flex items-start transition-transform hover:translate-x-2 duration-300">
+                            <i class="fas fa-check-circle text-yellow-300 text-2xl mr-4 mt-1"></i>
+                            <div>
+                                <strong class="text-yellow-300 bg-black bg-opacity-20 px-2 py-1 rounded mr-2">🎁 특별 혜택</strong> 
+                                수백만 원 상당의 <strong class="text-white">AI 최적화 웹사이트 전면 무상 구축</strong> (Next.js 기반)
+                            </div>
+                        </li>
+                        <li class="flex items-start transition-transform hover:translate-x-2 duration-300">
+                            <i class="fas fa-check-circle text-yellow-300 text-2xl mr-4 mt-1"></i>
+                            <div>AI 크롤러의 뇌에 꽂히는 <strong>JSON-LD Schema 완벽 이식</strong></div>
+                        </li>
+                        <li class="flex items-start transition-transform hover:translate-x-2 duration-300">
+                            <i class="fas fa-check-circle text-yellow-300 text-2xl mr-4 mt-1"></i>
+                            <div>시그니처 키워드 타겟 <strong>Q&A 콘텐츠 집중 발행 및 클러스터링</strong></div>
+                        </li>
+                        <li class="flex items-start transition-transform hover:translate-x-2 duration-300">
+                            <i class="fas fa-check-circle text-yellow-300 text-2xl mr-4 mt-1"></i>
+                            <div>권위 지수(Authority) 폭발을 위한 <strong>고품질 언론 홍보(PR) 집중 송출</strong></div>
+                        </li>
+                        <li class="flex items-start transition-transform hover:translate-x-2 duration-300">
+                            <i class="fas fa-check-circle text-yellow-300 text-2xl mr-4 mt-1"></i>
+                            <div>구글 맵(마이 비즈니스) 등 <strong>로컬 및 외부 신뢰도 강력 구축</strong></div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mt-6 text-center text-sm text-blue-200">
+                    * 기존 템플릿 사이트(아임웹, 카페24 등)를 그대로 유지하며 GEO만 세팅하길 원하시는 분들을 위한 스탠다드 패키지도 별도 준비되어 있습니다.
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="py-24 px-4 bg-pastel-gray">
+        <div class="max-w-4xl mx-auto fade-in">
+            <h2 class="text-4xl font-black text-center mb-16 text-dark-navy">
+                <i class="fas fa-question-circle toss-blue mr-3"></i>자주 묻는 질문
+            </h2>
+            
+            <div class="space-y-6">
+                <div class="hover-card p-8">
+                    <div class="text-xl font-bold text-toss-blue mb-4 flex items-start">
+                        <span class="mr-3 text-2xl">Q.</span> 
+                        언론 홍보(기사 송출)를 빼고 가격을 낮출 순 없나요?
+                    </div>
+                    <p class="text-text-gray leading-relaxed text-lg pl-8">
+                        <strong>불가합니다.</strong> AI 노출의 핵심은 공신력 있는 매체의 '언급(Authority)'입니다. GOAT 마케팅은 어설픈 세팅으로 성과를 타협하지 않습니다. 패키지 안에는 <strong>AI 1위 장악에 필요한 모든 필수 PR 비용과 마케팅 리소스가 완벽하게 포함</strong>되어 있습니다.
+                    </p>
+                </div>
+                
+                <div class="hover-card p-8">
+                    <div class="text-xl font-bold text-toss-blue mb-4 flex items-start">
+                        <span class="mr-3 text-2xl">Q.</span> 
+                        어떤 AI 모델에 노출되나요?
+                    </div>
+                    <p class="text-text-gray leading-relaxed text-lg pl-8">
+                        GOAT 마케팅의 GEO 기술은 전 세계 표준 웹 구조화 기술을 사용합니다. 따라서 <strong>ChatGPT, Perplexity, Claude, Gemini 등 모든 글로벌 메이저 AI가 타겟</strong>이 됩니다. 특히 실사용 점유율이 압도적인 ChatGPT와 퍼플렉시티를 최우선으로 장악하여 시장의 흐름을 완전히 가져옵니다.
+                    </p>
+                </div>
+                
+                <div class="hover-card p-8">
+                    <div class="text-xl font-bold text-toss-blue mb-4 flex items-start">
+                        <span class="mr-3 text-2xl">Q.</span> 
+                        기존 SEO나 퍼포먼스 광고와 병행해도 되나요?
+                    </div>
+                    <p class="text-text-gray leading-relaxed text-lg pl-8">
+                        <strong>당연합니다.</strong> GEO를 위해 구축한 탄탄한 웹 코드와 양질의 데이터는 <strong>구글 검색엔진 최적화(SEO) 성과를 극대화</strong>하며, 기존에 돌리시던 퍼포먼스 광고의 전환율(CVR)까지 폭발적으로 끌어올리는 가장 완벽한 인프라가 됩니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="final-cta" id="contact">
+        <div class="max-w-4xl mx-auto fade-in text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-black mb-8 text-white leading-tight">
+                지금 이 순간에도, AI는<br>
+                대표님의 <span class="text-yellow-400">경쟁사를 정답으로 추천</span>하고 있습니다.
+            </h2>
+            
+            <p class="text-xl md:text-2xl mb-12 text-gray-300 leading-relaxed font-medium">
+                AI가 한 번 "이 분야의 1위는 여기"라고 학습하고 나면,<br>
+                후발주자가 그 자리를 뒤집는 것은 기존 검색 포털보다 <strong>수십 배 어렵습니다.</strong>
+            </p>
+            
+            <div class="mb-12">
+                <p class="text-xl text-gray-400 font-medium mb-2">압도적인 퍼포먼스와 1:1 정예 관리를 위해,</p>
+                <p class="text-2xl text-white font-bold">
+                    이번 달 신규 프로젝트는 <span class="text-yellow-400 text-3xl mx-2 border-b-2 border-yellow-400">단 3개사</span>만 수주합니다.
+                </p>
+                <p class="text-lg text-gray-400 mt-4">내일의 시장 점유율을 빼앗기기 전에 가장 먼저 선점하세요.</p>
+            </div>
+            
+            <div class="text-center mb-8">
+                <a href="https://open.kakao.com/o/sJ0aXMfi" target="_blank" class="cta-button text-2xl py-6 px-12 shadow-2xl">
+                    <i class="fas fa-bolt mr-3 text-yellow-300"></i>
+                    남은 T/O 확인 및 무료 AI 진단 신청하기
+                </a>
+            </div>
+            
+            <div class="text-center opacity-50 text-sm text-white mt-16">
+                <p>© 2026 GOAT 마케팅. All rights reserved.</p>
+                <p class="mt-2">본 페이지의 모든 사례는 철저한 데이터 기반으로 작성되었습니다.</p>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // 스크롤 페이드인 & 패럴랙스 효과 애니메이션
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                
+                if (elementTop < window.innerHeight - 50 && elementBottom > 0) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+    </script>
+</body>
+</html>
